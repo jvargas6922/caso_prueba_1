@@ -1,0 +1,28 @@
+[
+    {
+        "model": "app_operaciones.mascota",
+        "pk": 1,
+        "fields": {
+            "nombre": "Firulais",
+            "contacto_duenio": "Joffred",
+            "especie": "Perro"
+        }
+    },
+    {
+        "model": "app_operaciones.mascota",
+        "pk": 2,
+        "fields": {
+            "nombre": "Kenia",
+            "contacto_duenio": "Joffred",
+            "especie": "Gato"
+        }
+    },{
+        "model": "app_operaciones.mascota",
+        "pk": 3,
+        "fields": {
+            "nombre": "freezer",
+            "contacto_duenio": "Joffred",
+            "especie": "Conejo"
+        }
+    }
+]

@@ -20,3 +20,17 @@ class Mascota(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Procedimiento(models.Model):
+    id_procedimiento = models.AutoField(primary_key=True)
+    procedimiento = models.CharField(max_length=45)
+    fecha = models.DateField()
+    hora_inicio = models.TimeField()
+    hora_fin = models.TimeField()
+    sala = models.ForeignKey(Sala, on_delete=models.CASCADE, db_column='id_sala')
+    usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE, db_column='id')
+    mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE, db_column='id_mascota')
+
+    def __str__(self):
+        return self.procedimiento
+

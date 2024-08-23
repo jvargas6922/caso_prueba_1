@@ -75,9 +75,9 @@ WSGI_APPLICATION = 'salas_operaciones.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-     'default': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'db_sala_operaciones',
+        'NAME':'veterinaria',
         'USER':'postgres',
         'PASSWORD':'joffred17912017',
         'HOST': '127.0.0.1',
@@ -132,3 +132,7 @@ STATICFILES_DIRS =[
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login'

@@ -1,0 +1,32 @@
+[
+    {
+        "model": "app_operaciones.sala",
+        "pk": 1,
+        "fields": {
+            "codigo": "Sala 1",
+            "color": "FF0000",
+            "tamanio": 10,
+            "descripcion": "Sala de operaciones 1"
+        }
+    },
+    {
+        "model": "app_operaciones.sala",
+        "pk": 2,
+        "fields": {
+            "codigo": "Sala 2",
+            "color": "FF0000",
+            "tamanio": 10,
+            "descripcion": "Sala de operaciones 2"
+        }
+    },
+    {
+        "model": "app_operaciones.sala",
+        "pk": 3,
+        "fields": {
+            "codigo": "Sala 3",
+            "color": "FF0000",
+            "tamanio": 10,
+            "descripcion": "Sala de operaciones 3"
+        }
+    }
+]
