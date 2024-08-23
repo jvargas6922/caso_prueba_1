@@ -1,9 +1,44 @@
 {% extends "layouts/base.html" %}
+{% load custom_filters %}
 
 {% block title %}
     Index
 {% endblock  %}
 
 {% block content %}
-    <h1>Hola desde pagina Index</h1>
+    <div class="container-fluid mt-2">
+        <div class="d-flex justify-content-end">
+            <a href="{% url "crear_procedimiento" %}" class="btn btn-secondary">Agendar</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    {% for day in days %}
+                        <th>{{ day|date:"l" }}</th> 
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for day in days %}
+                        <td>
+                            {% if process_by_day|get_item:day %}
+                                {% for procedure in process_by_day|get_item:day %}
+                                    <div>
+                                        <strong>Medico:</strong> {{ procedure.medico }}<br>
+                                        <strong>Horario:</strong> {{ procedure.horario }}<br>
+                                        <strong>Sala:</strong> {{ procedure.sala }}<br>
+                                    </div>
+                                    <hr>
+                                {% endfor %}
+                            {% else %}
+                                No hay procedimientos
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
 {% endblock  %}

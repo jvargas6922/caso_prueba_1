@@ -40,7 +40,47 @@ def eliminar_sala(id):
         sala.delete()
     except Exception as e:
         return e
-
-
-
+    
 #MASCOTA
+
+def listado_mascotas():
+    return Mascota.objects.all()
+
+def detalle_mascota(id):
+    try:
+        return Mascota.objects.get(id_mascota=id)
+    except Exception as e:
+        return e
+    
+def crear_mascota(nombre, contacto_duenio, especie):
+    try:
+        mascota = Mascota(nombre=nombre, contacto_duenio=contacto_duenio, especie=especie)
+        mascota.save()
+    except Exception as e:
+        return e
+    
+def actualizar_mascota(id, nombre=None, contacto_duenio=None, especie=None):
+    try:
+        mascota = detalle_mascota(id)
+        if nombre:
+            mascota.nombre = nombre
+        if contacto_duenio:
+            mascota.contacto_duenio = contacto_duenio
+        if especie:
+            mascota.especie = especie
+        mascota.save()
+    except Exception as e:
+        return e
+    
+def eliminar_mascota(id):
+    try:
+        mascota = detalle_mascota(id)
+        mascota.delete()
+    except Exception as e:
+        return e
+
+#PROCEDIMIENTO
+
+def listado_procedimientos():
+    return Procedimiento.objects.all()
+ 

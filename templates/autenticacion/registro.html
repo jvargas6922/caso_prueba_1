@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+  Registro
+{% endblock  %}
+
+{% block content %}
+  <h2 class="text-center">Registro Usuario</h1>
+  <div class="row">
+    <div class="col-12 col-md-4 offset-md-4">
+      <form method="post" action="/registro">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+      </form>
+    </div>
+  </div>
+{% endblock  %}
