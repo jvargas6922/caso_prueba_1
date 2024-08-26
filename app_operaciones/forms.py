@@ -53,5 +53,21 @@ class RegistroUserForm(forms.ModelForm):
 class CustomLoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+
+class SalaForm(forms.ModelForm):
+    class Meta:
+        model = Sala
+        fields = [
+            'codigo',
+            'color',
+            'tamanio',
+            'descripcion',
+        ]
+        widgets = {
+            'codigo': forms.TextInput(attrs={'class':'form-control'}),
+            'color': forms.TextInput(attrs={'class':'form-control'}),
+            'tamanio': forms.NumberInput(attrs={'class':'form-control'}),
+            'descripcion': forms.Textarea(attrs={'class':'form-control'}),
+        }
                                
                             

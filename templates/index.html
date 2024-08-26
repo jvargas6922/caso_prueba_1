@@ -2,14 +2,16 @@
 {% load custom_filters %}
 
 {% block title %}
-    Index
+    Agenda
 {% endblock  %}
 
 {% block content %}
     <div class="container-fluid mt-2">
-        <div class="d-flex justify-content-end mb-3">
-            <a href="{% url "crear_procedimiento" %}" class="btn btn-secondary">Agendar</a>
-        </div>
+        {% if user.is_authenticated %}
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{% url "crear_procedimiento" %}" class="btn btn-secondary">Agendar</a>
+            </div>
+        {% endif %}
         <table class="table">
             <thead>
                 <tr class="text-center">

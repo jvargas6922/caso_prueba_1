@@ -5,12 +5,12 @@ from django.contrib.messages import *
 from django.contrib.auth import login as auth_login
 from datetime import timedelta, date
 from .services import *
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     process = listado_procedimientos()
     days = get_week_days()
-    
-    
+
     process_by_day = {day: [] for day in days}
     
     for proc in process:
@@ -25,7 +25,7 @@ def index(request):
             if proc_date == day:
                 process_by_day[day].append(data)
 
-    print(process_by_day.items())
+    #print(process_by_day.items())
     
     context = {
         'days': days,
@@ -42,6 +42,7 @@ def get_week_days():
     for i in range(7):
         days.append(first_day + timedelta(days=i))  # Añadir cada día de la semana
     return days
+
 
 def registro(request):
   if request.method == 'POST':
@@ -74,7 +75,8 @@ def login(request):
         form = CustomLoginForm()
         context = {'form': form}
     return render(request, 'autenticacion/login.html', context)
-  
+
+@login_required
 def crear_procedimiento(request):
     if request.method == 'POST':
       form = ProcedimientoForm(request.POST)
@@ -88,4 +90,19 @@ def crear_procedimiento(request):
       form = ProcedimientoForm()
       context = {"form": form}
     return render(request, 'procedimiento/crear.html', context)
-        
+
+
+def crear_sala(request):
+    if request.method == 'POST':
+      form = SalaForm(request.POST)
+      context = {"form": form}
+      if form.is_valid():
+        form.save()
+        return redirect('index')
+      else:
+        return render(request, 'sala/crear.html', context)
+    else:
+      form = SalaForm()
+      context = {"form": form}
+    return render(request, 'sala/crear.html', context)
+    
