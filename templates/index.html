@@ -7,34 +7,31 @@
 
 {% block content %}
     <div class="container-fluid mt-2">
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mb-3">
             <a href="{% url "crear_procedimiento" %}" class="btn btn-secondary">Agendar</a>
         </div>
         <table class="table">
             <thead>
-                <tr>
+                <tr class="text-center">
                     {% for day in days %}
-                        <th>{{ day|date:"l" }}</th> 
+                        <th style="width:10rem" class="border border-dark">{{ day|date:"l" }}</th> 
                     {% endfor %}
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="text-center">
                     {% for day in days %}
-                        <td>
-                            {% if process_by_day|get_item:day %}
-                                {% for procedure in process_by_day|get_item:day %}
-                                    <div>
-                                        <strong>Medico:</strong> {{ procedure.medico }}<br>
-                                        <strong>Horario:</strong> {{ procedure.horario }}<br>
-                                        <strong>Sala:</strong> {{ procedure.sala }}<br>
-                                    </div>
-                                    <hr>
-                                {% endfor %}
-                            {% else %}
-                                No hay procedimientos
-                            {% endif %}
-                        </td>
+                    <td class="border border-dark">
+                        {% if process_by_day|get_item:day %}
+                            {% for procedure in process_by_day|get_item:day %}
+                                <div class="mb-3" style="border: 3px solid #{{ procedure.sala.color }};">
+                                    <strong>Medico:</strong> {{ procedure.medico }}<br>
+                                    <strong>Horario:</strong><br>{{ procedure.horario }}<br>
+                                    <strong>Sala:</strong> {{ procedure.sala }}<br>
+                                </div>    
+                            {% endfor %}
+                        {% endif %}
+                    </td>
                     {% endfor %}
                 </tr>
             </tbody>
